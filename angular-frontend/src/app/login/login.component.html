@@ -1,0 +1,42 @@
+<div id="login" class="container">
+  <h3 style="text-align:center">Sign In</h3> 
+  <img id="icon" src="../../assets/img/User-Executive-Green-icon.png" alt="">
+  <br><br>
+  <form #loginForm = "ngForm" (ngSubmit)="loginForm.valid && onSubmit(loginForm)">
+    <div class="form-group">
+      <!-- <b><label for="email">Email:</label></b> -->
+      <input type="text" name="email" class="form-control" #email="ngModel" [(ngModel)]="model.email" placeholder="Enter Your Email" [pattern]="emailRegex" required [ngClass]="{'Invalid-textbox' :loginForm.submitted && !email.valid }">
+      <div *ngIf="loginForm.submitted && email.errors?.required">
+        <label class="validation-message"><b>*Please provide your email address</b></label>
+      </div>
+      <div *ngIf="loginForm.submitted && email.errors?.pattern">
+        <label class="validation-message"><b>*Invalid email address</b></label>
+      </div>
+    </div>
+    <div class="form-group">
+      <!-- <b><label for="password">Password:</label></b> -->
+      <input type="password" name="password" class="form-control" #password="ngModel" [(ngModel)]="model.password" placeholder="Enter Your Password" required minlength="4" [ngClass]="{'Invalid-textbox' :loginForm.submitted && !password.valid }">
+      <div *ngIf="loginForm.submitted && password.errors?.required">
+        <label class="validation-message"><b>*Please provide your password</b></label>
+      </div>
+      <div *ngIf="loginForm.submitted && password.errors?.minlength">
+        <label class="validation-message"><b>*Password must have 4 characters</b></label>
+      </div>
+    </div>
+    <div class="form-group">
+      <select class="form-control" name="serverType" id="serverType" required #serverType="ngModel" [(ngModel)]="model.serverType" [ngClass]="{'Invalid-select' :loginForm.submitted && !serverType.valid}">
+        <option value="" disabled selected hidden>Select Your Server Type</option>
+        <option value="mySQL">mySQL</option>
+        <option value="mongoDB">mongoDB</option>
+      </select>
+      <div *ngIf="loginForm.submitted && serverType.errors?.required">
+          <label class="validation-message"><b>*Please Select a Server Type</b></label>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Login</button>
+  </form>
+  <br>
+  <div class="alert alert-danger" *ngIf="serverErrorMessage" style="text-align: center">
+    {{serverErrorMessage}}
+  </div>
+</div>

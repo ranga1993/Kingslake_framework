@@ -1,0 +1,87 @@
+<nav class="navbar navbar-dark bg-dark navbar-inverse">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav"></ul>
+    <ul class="nav navbar-nav navbar-right">
+        <!-- <button class="btn btn-primary navbar-btn">Logout</button> -->
+        <input class="btn btn-primary" type="button" (click)="onLogout()" value="Logout">
+    </ul>
+  </div>
+</nav>
+<form #frm = "ngForm" (ngSubmit)="addEmployee(frm)" *ngIf="!toggleForm">
+  <h2>Add Employee</h2>
+  <div class="form-group">
+    <label for="">Name:</label>
+    <input type="text" class="form-control" name="empName" id="empName" style="width:50%" ngModel required>
+  </div>
+  <div class="form-group">
+      <label for="">NIC:</label>
+      <input type="text" class="form-control" name="empNic" id="empNic" style="width:50%" ngModel required>
+  </div>
+  <button type="submit" class="btn btn-success" [disabled]=frm.invalid onclick="document.getElementById('empName').value=''; document.getElementById('empNic').value=''">Add Employee</button>
+</form><br>
+
+<form #editForm = "ngForm" (ngSubmit)="editEmployee(editForm)" *ngIf="toggleForm">
+  <h2>Edit Employee</h2>
+  <div class="form-group">
+    <label for="">Name:</label>
+    <input type="text" class="form-control" name="empName" style="width:50%" [ngModel]="selectedEmployee.name">
+  </div>
+  <div class="form-group">
+      <label for="">NIC:</label>
+      <input type="text" class="form-control" name="empNic" style="width:50%" [ngModel]="selectedEmployee.nic">
+  </div>
+  <button type="submit" class="btn btn-success">Save</button>
+</form><br>
+
+<h2>Employee List</h2><br>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Emp_id</th>
+      <th>Name</th>
+      <th>NIC</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let employee of employeeList">
+      <td>{{employee.id}}</td>
+      <td>{{employee.name}}</td>
+      <td>{{employee.nic}}</td>
+      <td><button type="button" class="btn btn-primary" (click) = "showEditForm(employee)" [disabled]="toggleForm">Edit</button></td>
+      <td><button type="button" class="btn btn-danger" (click) = "deleteEmployee(employee.id)">Delete</button></td>
+    </tr>
+  </tbody>
+</table>
+<!-- <div class="">
+  <div class="row">
+    <div class="col-md-1">
+      <h6>Emp_id</h6>
+    </div>
+    <div class="col-md-3">
+      <h6>Name</h6>
+    </div>
+    <div class="col-md-3">
+      <h6>NIC</h6>
+    </div>
+  </div><br>
+  <div *ngFor="let employee of employeeList" class="row">
+    <div class="col-md-1">
+      {{employee.id}}
+    </div>
+    <div class="col-md-3">
+      {{employee.name}}
+    </div>
+    <div class="col-md-3">
+      {{employee.nic}}
+    </div>
+    <div class="col-md-2">
+      <button type="button" class="btn btn-primary" (click) = "showEditForm(employee)" [disabled]="toggleForm">Edit</button>
+    </div>
+    <div class="col-md-2">
+      <button type="button" class="btn btn-danger" (click) = "deleteEmployee(employee.id)">Delete</button>
+      <br><br>
+    </div>
+  </div>
+</div> -->

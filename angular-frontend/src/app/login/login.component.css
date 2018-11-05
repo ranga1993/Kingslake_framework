@@ -1,0 +1,23 @@
+#login{
+    width: 30%;
+    background-color: darkturquoise;
+    margin-top: 120px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+#icon{
+    margin-left: 37%
+}
+
+input{
+    text-align: center
+}
+
+button{
+    margin-left: 42%
+}
+
+label.validation-message{
+    background-color: fuchsia
+}
