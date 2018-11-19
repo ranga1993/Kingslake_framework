@@ -1,6 +1,8 @@
 var express = require('express');
 var bodyparser = require('body-parser');
 var cors = require('cors');
+var portNumber = require('./dependencies');
+var logger = require('./logger');
 
 //Constructing the express app
 var app = express();
@@ -8,9 +10,6 @@ var app = express();
 //Importing Routes
 const route = require('./route/routes');
 const mongoRoute = require('./route/mongoRoutes');
-
-//Defining the Port Number
-const PORT = 3000;
 
 //Using Middleware
 app.use(cors());
@@ -21,12 +20,7 @@ app.use(bodyparser.json());
 app.use('/api', route);
 app.use('/mongoapi', mongoRoute);
 
-
-app.get('/', function(req, res){
-    res.send("Hello Ranga");
-});
-
 //Running the Server
-app.listen(PORT, function(){
-    console.log("Server has been started at port no: " + PORT);
+app.listen(portNumber.PORT, function(){
+    logger.serverLog.info('Server has been started at port no: ' + portNumber.PORT);
 });

@@ -1,15 +1,14 @@
 var express = require('express');
 var bodyparser = require('body-parser');
 var cors = require('cors');
+var portNumber = require('./dependencies');
+var logger = require('./logger');
 
 //Constructing the express app
 var app = express();
 
 //Importing Routes
 const route = require('./route/routes');
-
-//Defining the Port Number
-const PORT = 5000;
 
 //Using Middleware
 app.use(cors());
@@ -23,6 +22,6 @@ app.get("/", function(req, res){
 });
 
 //Running the Server
-app.listen(PORT, function(){
-    console.log('Server started on port 5000')
+app.listen(portNumber.PORT, function(){
+    logger.serverLog.info('Server has been started at port no: ' + portNumber.PORT);
 });

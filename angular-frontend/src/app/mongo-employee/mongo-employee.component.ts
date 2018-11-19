@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Employee } from '../mongoEmployee';
-import { MongodataService } from '../mongodata.service';
+import { Employee } from '../models/mongoEmployee';
+import { MongodataService } from '../services/mongodata.service';
 import { from } from 'rxjs';
-import { LoginService } from '../login.service';
+import { LoginService } from '../services/login.service';
 import { Router } from '@angular/router';
 
 @Component({

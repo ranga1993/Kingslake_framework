@@ -5,13 +5,15 @@ var mongoRoute = express.Router();
 //Importing employees model
 const Employee = require('../model/employees');
 
+var logger = require('../logger');
+
 //Creating the mongoDB Connection
-mongoose.connect('mongodb://localhost:27017/employees', function(err){
+mongoose.connect('mongodb://localhost:27017/employees', { useNewUrlParser: true }, function(err){
     if(!err){
-        console.log('MongoDB connected at port 27017');
+        logger.mongoDBConnectionLog.info('MongoDB connected at port 27017');
     }
     else{
-        console.log('Connection failed');
+        logger.mongoDBConnectionLog.info('MongoDB connection failed');
     }
 });
 
@@ -23,7 +25,7 @@ mongoRoute.get('/get_employees', function(req, res, next){
             res.json(employees);
         }
         else{
-            res.json(err);
+            logger.mongoDBErrorLog.error(err);
         }
     })
 })
@@ -40,7 +42,7 @@ mongoRoute.post('/add_employee', function(req, res, next){
             res.json({msg: 'Employee has been added successfully'});
         }
         else{
-            res.json(err);
+            logger.mongoDBErrorLog.error(err);
         }
     });
 })
@@ -58,7 +60,7 @@ mongoRoute.put('/update_employee/:_id', function(req, res, next){
             res.json(result);
         }
         else{
-            res.json(err);
+            logger.mongoDBErrorLog.error(err);
         }
     })
 })
@@ -70,7 +72,7 @@ mongoRoute.delete('/delete_employee/:_id', function(req, res, next){
             res.json(result);
         }
         else{
-            res.json(err);
+            logger.mongoDBErrorLog.error(err);
         }
     })
 })

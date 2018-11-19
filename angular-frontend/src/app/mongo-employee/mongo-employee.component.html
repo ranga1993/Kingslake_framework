@@ -2,7 +2,6 @@
     <div class="container-fluid">
       <ul class="nav navbar-nav"></ul>
       <ul class="nav navbar-nav navbar-right">
-          <!-- <button class="btn btn-primary navbar-btn">Logout</button> -->
           <input class="btn btn-primary" type="button" (click)="onLogout()" value="Logout">
       </ul>
     </div>
@@ -42,7 +41,6 @@
 </form><br>
 
 <h2>Employee List</h2><br>
-<!-- <div class=""> -->
 <table class="table table-striped">
   <thead>
       <tr>
@@ -63,33 +61,3 @@
       </tr>
   </tbody>
 </table>
-  <!-- <div class="row">
-    <div class="col-md-3">
-      <h6>First Name</h6>
-    </div>
-    <div class="col-md-3">
-      <h6>Last Name</h6>
-    </div>
-    <div class="col-md-3">
-      <h6>NIC</h6>
-    </div>
-  </div><br> -->
-  <!-- <div *ngFor="let employee of mongoEmployeeList" class="row">
-    <div class="col-md-3">
-      {{employee.firstName}}
-    </div>
-    <div class="col-md-3">
-      {{employee.lastName}}
-    </div>
-    <div class="col-md-3">
-      {{employee.nic}}
-    </div>
-    <div class="col-md-1">
-      <button type="button" class="btn btn-primary" (click) = "showEditForm(employee)" [disabled]="toggleForm">Edit</button>
-    </div>
-    <div class="col-md-1">
-      <button type="button" class="btn btn-danger" (click) = "deleteEmployee(employee._id)">Delete</button>
-      <br><br>
-    </div>
-  </div> -->
-<!-- </div> -->

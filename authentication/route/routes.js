@@ -2,6 +2,7 @@ var express = require('express');
 var jwt = require('jsonwebtoken');
 var mysql = require('mysql');
 var router = express.Router();
+var logger = require('../logger');
 
 //Creating the mySQL Database connection
 var mysqlConnection = mysql.createConnection({
@@ -14,10 +15,10 @@ var mysqlConnection = mysql.createConnection({
 //Check the status of the connection
 mysqlConnection.connect(function(err){
     if(!err){
-        console.log("mySQL connection is successful");
+        logger.mysqlConnectionLog.info('mySQL Connection is Successful');
     }
     else{
-        console.log("Connection failed!");
+        logger.mysqlConnectionLog.error('mySQL Connection is failed');
     }
 })
 
@@ -72,7 +73,6 @@ function verifyToken(req, res, next){
         const bearer = bearerHeader.split(' ');
         const bearerToken = bearer[1];
         req.token = bearerToken;
-        console.log('ABCD');
         next();
     }
     else{

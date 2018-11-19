@@ -2,7 +2,6 @@
   <div class="container-fluid">
     <ul class="nav navbar-nav"></ul>
     <ul class="nav navbar-nav navbar-right">
-        <!-- <button class="btn btn-primary navbar-btn">Logout</button> -->
         <input class="btn btn-primary" type="button" (click)="onLogout()" value="Logout">
     </ul>
   </div>
@@ -54,34 +53,3 @@
     </tr>
   </tbody>
 </table>
-<!-- <div class="">
-  <div class="row">
-    <div class="col-md-1">
-      <h6>Emp_id</h6>
-    </div>
-    <div class="col-md-3">
-      <h6>Name</h6>
-    </div>
-    <div class="col-md-3">
-      <h6>NIC</h6>
-    </div>
-  </div><br>
-  <div *ngFor="let employee of employeeList" class="row">
-    <div class="col-md-1">
-      {{employee.id}}
-    </div>
-    <div class="col-md-3">
-      {{employee.name}}
-    </div>
-    <div class="col-md-3">
-      {{employee.nic}}
-    </div>
-    <div class="col-md-2">
-      <button type="button" class="btn btn-primary" (click) = "showEditForm(employee)" [disabled]="toggleForm">Edit</button>
-    </div>
-    <div class="col-md-2">
-      <button type="button" class="btn btn-danger" (click) = "deleteEmployee(employee.id)">Delete</button>
-      <br><br>
-    </div>
-  </div>
-</div> -->

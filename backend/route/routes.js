@@ -1,6 +1,7 @@
 var express = require('express');
 var mysql = require('mysql');
 var router = express.Router();
+var logger = require('../logger');
 
 //Creating the mySQL Database connection
 var mysqlConnection = mysql.createConnection({
@@ -13,22 +14,21 @@ var mysqlConnection = mysql.createConnection({
 //Check the status of the connection
 mysqlConnection.connect(function(err){
     if(!err){
-        console.log("mySQL Connection is Successful");
+        logger.mysqlConnectionLog.info('mySQL Connection is Successful');
     }
     else{
-        console.log("mySQL Connection is failed");
+        logger.mysqlConnectionLog.error('mySQL Connection is failed');
     }
 });
 
 //Get Employee Details
 router.get('/get_employees', function(req, res, next){
-    // res.send('get route tested');
     mysqlConnection.query('SELECT * FROM employee', function(err, rows, fields){
         if(!err){
             res.send(rows);
         }
         else{
-            console.log(err);
+            logger.mysqlErrorLog.error(err);
         }
     });
 });
@@ -40,7 +40,7 @@ router.get('/get_employee/:id', function(req, res, next){
             res.send(rows);
         }
         else{
-            console.log(err);
+            logger.mysqlErrorLog.error(err);
         }
     });
 });
@@ -53,7 +53,7 @@ router.post('/add_employee', function(req, res, next){
             res.end(JSON.stringify(rows));
         }
         else{
-            console.log(err);
+            logger.mysqlErrorLog.error(err);
         }
     });
 });
@@ -65,7 +65,7 @@ router.put('/update_employee/:id', function(req, res, next){
             res.json(result);
         }
         else{
-            res.json(err);
+            logger.mysqlErrorLog.error(err);
         }
     });
 });
@@ -77,7 +77,7 @@ router.delete('/delete_employee/:id', function(req, res, next){
             res.json(result);
         }
         else{
-            res.json(err);
+            logger.mysqlErrorLog.error(err);
         }
     });
 });

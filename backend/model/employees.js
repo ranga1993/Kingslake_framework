@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+//Defining mongoDB Employee Schema
 const EmployeeSchema = mongoose.Schema({
     firstName: {
         type: String,
