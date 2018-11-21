@@ -26,6 +26,7 @@
         <option value="" disabled selected hidden>Select Your Server Type</option>
         <option value="mySQL">mySQL</option>
         <option value="mongoDB">mongoDB</option>
+        <option value="mongoDBAtlas">mongoDBAtlas</option>
       </select>
       <div *ngIf="loginForm.submitted && serverType.errors?.required">
           <label class="validation-message"><b>*Please Select a Server Type</b></label>

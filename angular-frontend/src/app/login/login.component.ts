@@ -39,6 +39,9 @@ export class LoginComponent implements OnInit {
       else if(serverType == 'mongoDB'){
         this.router.navigateByUrl('mongo')
       }
+      else if(serverType == 'mongoDBAtlas'){
+        this.router.navigateByUrl('mongoatlas')
+      }
     }
   }
 
@@ -54,6 +57,9 @@ export class LoginComponent implements OnInit {
           }
           else if(res['serverType'] == 'mongoDB'){
             this.router.navigateByUrl('mongo')
+          }
+          else if(res['serverType'] == 'mongoDBAtlas'){
+            this.router.navigateByUrl('mongoatlas')
           }
         }
         else{

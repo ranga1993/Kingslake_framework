@@ -1,0 +1,63 @@
+<nav class="navbar navbar-dark bg-dark navbar-inverse">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav"></ul>
+    <ul class="nav navbar-nav navbar-right">
+        <input class="btn btn-primary" type="button" (click)="onLogout()" value="Logout">
+    </ul>
+  </div>
+</nav>
+<form #frm = "ngForm" (ngSubmit)="addEmployee(frm)" *ngIf="!toggleForm">
+<h2>Add Employee</h2>
+<div class="form-group">
+  <label for="">First Name:</label>
+  <input type="text" class="form-control" name="firstName" id="firstName" style="width:50%" ngModel required>
+</div>
+<div class="form-group">
+  <label for="">Last Name:</label>
+  <input type="text" class="form-control" name="lastName" id="lastName" style="width:50%" ngModel required>
+</div>
+<div class="form-group">
+    <label for="">NIC:</label>
+    <input type="text" class="form-control" name="nic" id="nic" style="width:50%" ngModel required>
+</div>
+<button type="submit" class="btn btn-success" [disabled]=frm.invalid onclick="document.getElementById('firstName').value=''; document.getElementById('lastName').value=''; document.getElementById('nic').value=''">Add Employee</button>
+</form><br>
+
+<form #editForm = "ngForm" (ngSubmit)="editEmployee(editForm)" *ngIf="toggleForm">
+<h2>Edit Employee</h2>
+<div class="form-group">
+  <label for="">First Name:</label>
+  <input type="text" class="form-control" name="firstName" style="width:50%" [ngModel]="selectedEmployee.firstName">
+</div>
+<div class="form-group">
+  <label for="">Last Name:</label>
+  <input type="text" class="form-control" name="lastName" style="width:50%" [ngModel]="selectedEmployee.lastName">
+</div>
+<div class="form-group">
+    <label for="">NIC:</label>
+    <input type="text" class="form-control" name="nic" style="width:50%" [ngModel]="selectedEmployee.nic">
+</div>
+<button type="submit" class="btn btn-success">Save</button>
+</form><br>
+
+<h2>Employee List</h2><br>
+<table class="table table-striped">
+<thead>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>NIC</th>
+      <th></th>
+      <th></th>
+    </tr>
+</thead>
+<tbody>
+    <tr *ngFor="let employee of mongoEmployeeList">
+      <td>{{employee.firstName}}</td>
+      <td>{{employee.lastName}}</td>
+      <td>{{employee.nic}}</td>
+      <td><button type="button" class="btn btn-primary" (click) = "showEditForm(employee)" [disabled]="toggleForm">Edit</button></td>
+      <td><button type="button" class="btn btn-danger" (click) = "deleteEmployee(employee._id)">Delete</button></td>
+    </tr>
+</tbody>
+</table>

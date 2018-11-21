@@ -11,13 +11,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { LoginComponent } from './login/login.component';
 
 import { AuthGuard } from './auth/auth.guard';
+import { MongoAtlasEmployeeComponent } from './mongo-atlas-employee/mongo-atlas-employee.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     EmployeeComponent,
     MongoEmployeeComponent,
-    LoginComponent
+    LoginComponent,
+    MongoAtlasEmployeeComponent
   ],
   imports: [
     BrowserModule,

@@ -1,3 +1,12 @@
 {"message":"mySQL Connection is Successful","level":"info","timestamp":"2018-11-15 16:07:42"}
 {"message":"mySQL Connection is Successful","level":"info","timestamp":"2018-11-16T04:23:11.541Z"}
 {"message":"mySQL Connection is Successful","level":"info","timestamp":"2018-11-16T05:37:45.367Z"}
+{"message":"mySQL Connection is failed","level":"error","timestamp":"2018-11-21T08:04:58.000Z"}
+{"message":"mySQL Connection is failed","level":"error","timestamp":"2018-11-21T08:06:10.571Z"}
+{"message":"mySQL Connection is failed","level":"error","timestamp":"2018-11-21T08:07:22.284Z"}
+{"message":"mySQL Connection is failed","level":"error","timestamp":"2018-11-21T08:07:55.101Z"}
+{"message":"mySQL Connection is failed","level":"error","timestamp":"2018-11-21T08:08:22.048Z"}
+{"message":"mySQL Connection is failed","level":"error","timestamp":"2018-11-21T08:08:46.843Z"}
+{"message":"mySQL Connection is failed","level":"error","timestamp":"2018-11-21T08:16:52.482Z"}
+{"message":"mySQL Connection is failed","level":"error","timestamp":"2018-11-21T08:22:04.170Z"}
+{"message":"mySQL Connection is Successful","level":"info","timestamp":"2018-11-21T09:09:17.685Z"}
