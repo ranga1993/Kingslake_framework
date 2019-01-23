@@ -12,6 +12,7 @@ import { LoginComponent } from './login/login.component';
 
 import { AuthGuard } from './auth/auth.guard';
 import { MongoAtlasEmployeeComponent } from './mongo-atlas-employee/mongo-atlas-employee.component';
+import { JsbEmployeeComponent } from './jsb-employee/jsb-employee.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { MongoAtlasEmployeeComponent } from './mongo-atlas-employee/mongo-atlas-
     EmployeeComponent,
     MongoEmployeeComponent,
     LoginComponent,
-    MongoAtlasEmployeeComponent
+    MongoAtlasEmployeeComponent,
+    JsbEmployeeComponent,
   ],
   imports: [
     BrowserModule,
