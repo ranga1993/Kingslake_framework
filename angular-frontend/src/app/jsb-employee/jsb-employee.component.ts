@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
   templateUrl: './jsb-employee.component.html',
   styleUrls: ['./jsb-employee.component.css'],
 
+  //Data Service Providers
   providers: [JsbdataService]
 })
 export class JsbEmployeeComponent implements OnInit {
@@ -22,8 +23,10 @@ export class JsbEmployeeComponent implements OnInit {
   //Defining toggleForm variable
   toggleForm: boolean = false;
 
+  //Defining Constructor Variables
   constructor(private jsbDataService: JsbdataService, private router: Router) { }
 
+  //Get Employees
   getEmployees(){
     this.jsbDataService.getEmployeeDetails()
       .subscribe(employees => {
@@ -31,6 +34,7 @@ export class JsbEmployeeComponent implements OnInit {
       })
   }
 
+  //Insert an Employee
   addEmployee(form){
     let newEmployee = {
       name : form.value.empName,
@@ -44,6 +48,7 @@ export class JsbEmployeeComponent implements OnInit {
       })
   }
 
+  //Delete an Employee
   deleteEmployee(id){
     this.jsbDataService.deleteEmployee(id)
       .subscribe( data => {
@@ -58,6 +63,7 @@ export class JsbEmployeeComponent implements OnInit {
       })
   }
 
+  //Update an Employee
   editEmployee(form){
     let newEmployee = {
       id :this.selectedEmployee.id,
@@ -67,17 +73,18 @@ export class JsbEmployeeComponent implements OnInit {
 
     this.jsbDataService.updateEmployee(newEmployee)
       .subscribe( result => {
-        // console.log('Original item to be updated with old values: ' + result);
         this.getEmployees();
       });
       this.toggleForm = !this.toggleForm;
   }
 
+  //Enabling Edit form When click on Edit button
   showEditForm(employee){
     this.selectedEmployee = employee;
     this.toggleForm = !this.toggleForm;
   }
 
+  //Default content for landing page after Login
   ngOnInit() {
     this.getEmployees();
   }
